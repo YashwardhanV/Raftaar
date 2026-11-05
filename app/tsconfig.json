@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "ES2021", "module": "ESNext", "moduleResolution": "bundler",
+    "strict": true, "noUnusedLocals": true, "lib": ["ES2021", "DOM"], "skipLibCheck": true
+  },
+  "include": ["src"]
+}

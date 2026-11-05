@@ -1,0 +1,73 @@
+:root {
+  --bg: rgba(18, 20, 26, 0.92);
+  --fg: #e8eaee;
+  --muted: #8a8f98;
+  --track: #2a2f3a;
+  --c: #8a8f98;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+[data-state='working'] { --c: #3b82f6; }
+[data-state='needs_permission'], [data-state='waiting_input'] { --c: #f59e0b; }
+[data-state='long_running'] { --c: #f97316; }
+[data-state='stalled'] { --c: #ef4444; }
+[data-state='phase_done'] { --c: #22c55e; }
+
+html, body { margin: 0; background: transparent; overflow: hidden; user-select: none; }
+
+#widget {
+  position: relative;
+  box-sizing: border-box;
+  width: 220px;
+  height: 194px;
+  padding: 8px 10px 6px;
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+  transition: border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+}
+[data-state='needs_permission'] { animation: pulse 1.6s ease-in-out infinite; }
+@keyframes pulse {
+  50% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 45%, transparent) inset; }
+}
+
+#project { font-size: 11px; color: var(--muted); max-width: 170px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#gauge { width: 200px; height: 122px; flex: none; overflow: visible; }
+#meta { font-size: 11px; display: flex; gap: 6px; align-items: center; margin-top: 2px; }
+#badge { font-size: 10px; padding: 0 5px; border-radius: 8px; background: #f59e0b33; color: #fbbf24; }
+#status {
+  font-size: 11px; color: var(--c); margin-top: 2px;
+  max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#dots { display: flex; gap: 5px; margin-top: 3px; min-height: 6px; }
+.dot { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%; background: var(--c); opacity: 0.45; cursor: pointer; }
+.dot.active { opacity: 1; }
+
+#close {
+  position: absolute; top: 4px; right: 6px;
+  width: 18px; height: 18px; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; color: var(--muted); font-size: 14px; line-height: 18px;
+  opacity: 0; transition: opacity 0.15s; cursor: pointer;
+}
+#widget:hover #close { opacity: 1; }
+#close:hover { background: #ef444433; color: #fca5a5; }
+
+.track, .progress { fill: none; stroke-width: 8; stroke-linecap: round; }
+.track { stroke: var(--track); }
+.progress { stroke: var(--c); transition: stroke 0.3s; }
+.ticks line { stroke: var(--muted); stroke-linecap: round; }
+.ticks .major { stroke-width: 2; }
+.ticks .minor { stroke-width: 1; opacity: 0.6; }
+.tick-label { fill: var(--muted); font-size: 9px; text-anchor: middle; }
+.needle-line { stroke: var(--fg); stroke-width: 3; stroke-linecap: round; }
+.hub { fill: var(--fg); }
+.pct { fill: var(--fg); font-size: 22px; font-weight: 600; text-anchor: middle; }
+
+/* Compact: ring and percentage only. */
+#widget.compact { width: 140px; height: 104px; padding: 6px; justify-content: center; }
+.compact #project, .compact #meta, .compact #status, .compact #dots, .compact .ticks { display: none; }
+.compact #gauge { width: 126px; height: 77px; }

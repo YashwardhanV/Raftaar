@@ -1,0 +1,19 @@
+{
+  "session_id": "313be256-d4f8-40ea-aeb8-8cf6155e20a8",
+  "transcript_path": "/home/you/.claude/projects/-tmp-claude-0--home-user-Raftaar-db5e81eb-8ffc-5d75-b5f6-b0899903dd10-scratchpad-p0-proj/313be256-d4f8-40ea-aeb8-8cf6155e20a8.jsonl",
+  "cwd": "/home/you/code/demo",
+  "scratchpad_dir": "/home/you/.scratch",
+  "prompt_id": "a04eda03-b0c6-4df5-b170-90e40cbf1bfd",
+  "permission_mode": "default",
+  "effort": {
+    "level": "medium"
+  },
+  "hook_event_name": "PreToolUse",
+  "tool_name": "TaskCreate",
+  "tool_input": {
+    "subject": "Create a.txt containing 'a'",
+    "description": "Create a.txt in the project directory with content 'a'",
+    "activeForm": "Creating a.txt"
+  },
+  "tool_use_id": "toolu_01ExKkJGTRTd13pfTRrJFtsr"
+}
